@@ -65,44 +65,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/extended_share"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|start"
             android:layout_margin="10dp"
             android:onClick="shareMeme"
             android:text="@string/share"
             app:elevation="10dp"
             app:icon="@drawable/ic_baseline_share_24"
-            tools:layout_editor_absoluteX="34dp"
-            tools:ignore="NotSibling"
-            app:rippleColor="#FFFFFF"/>
+            app:rippleColor="#FFFFFF"
+            tools:ignore="NotSibling" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/extended_next"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom|end|center"
             android:layout_margin="10dp"
-            android:onClick="NextMeme"
+
+            android:onClick="nextMeme"
             android:text="@string/next"
             app:elevation="10dp"
             app:icon="@drawable/ic_baseline_navigate_next_24" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_margin="10dp"
-            android:elevation="16dp"
-            android:src="@drawable/ic_baseline_save_24"
-            android:onClick="download"
-            android:contentDescription="@string/download_meme"
-            tools:targetApi="lollipop" />
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

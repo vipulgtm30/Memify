@@ -65,6 +65,10 @@ dependencies {
 
     //Library for downloading image
     implementation "io.coil-kt:coil:0.13.0"
+
+    //Lottie Library
+    implementation "com.airbnb.android:lottie:3.4.0"
+
 }
 
 

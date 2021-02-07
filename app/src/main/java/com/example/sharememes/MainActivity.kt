@@ -29,61 +29,67 @@ import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
-    var currentImageUrl: String?= null
+    private var currentImageUrl: String?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         loadMemes()
 
         val builder: StrictMode.VmPolicy.Builder = StrictMode.VmPolicy.Builder()
         StrictMode.setVmPolicy(builder.build())
     }
 
+    //Take the meme from url and to load the memes into our imageview
     private fun loadMemes(){
 
-        // Instantiate the RequestQueue.
-        val pb = findViewById<ProgressBar>(R.id.progressBar)
-        pb.visibility = View.VISIBLE
-        val url = "https://meme-api.herokuapp.com/gimme"
-        val im = findViewById<ImageView>(R.id.imageView)
-        // Request a string response from the provided URL.
-        val JsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, url, null,
-            { response ->
-                currentImageUrl = response.getString("url")
-                Glide.with(this).load(currentImageUrl).listener(object: RequestListener<Drawable>{
-                    override fun onLoadFailed(
-                        e: GlideException?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        pb.visibility = View.GONE
-                        return false
-                    }
+            // Instantiate the RequestQueue.
+            val pb = findViewById<ProgressBar>(R.id.progressBar)
+            pb.visibility = View.VISIBLE
+            val url = "https://meme-api.herokuapp.com/gimme"
+            val im = findViewById<ImageView>(R.id.imageView)
+            // Request a string response from the provided URL.
+            val JsonObjectRequest = JsonObjectRequest(
+                    Request.Method.GET, url, null,
+                    { response ->
+                        currentImageUrl = response.getString("url")
+                        Glide.with(this).load(currentImageUrl).listener(object: RequestListener<Drawable>{
+                            override fun onLoadFailed(
+                                    e: GlideException?,
+                                    model: Any?,
+                                    target: Target<Drawable>?,
+                                    isFirstResource: Boolean
+                            ): Boolean {
+                                pb.visibility = View.GONE
+                                return false
+                            }
 
-                    override fun onResourceReady(
-                        resource: Drawable?,
-                        model: Any?,
-                        target: Target<Drawable>?,
-                        dataSource: DataSource?,
-                        isFirstResource: Boolean
-                    ): Boolean {
-                        pb.visibility = View.GONE
-                        return false
-                    }
-                }).into(im)
-            },
-            {
-                Log.d("erro", it.localizedMessage)
-            })
+                            override fun onResourceReady(
+                                    resource: Drawable?,
+                                    model: Any?,
+                                    target: Target<Drawable>?,
+                                    dataSource: DataSource?,
+                                    isFirstResource: Boolean
+                            ): Boolean {
+                                pb.visibility = View.GONE
+                                return false
+                            }
+                        }).into(im)
+                    },
+                    {
+                        Log.d("error", it.localizedMessage)
+                    })
 
-        // Add the request to the RequestQueue.
-        MySingleton.getInstance(this,).addToRequestQueue(JsonObjectRequest)
+            // Add the request to the RequestQueue.
+            MySingleton.getInstance(this,).addToRequestQueue(JsonObjectRequest)
+
     }
 
+
+    //Share Meme button onclick function
     fun shareMeme(view: View) {
+
         Picasso.get().load(currentImageUrl).into(object: com.squareup.picasso.Target{
 
             override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
@@ -118,14 +124,12 @@ class MainActivity : AppCompatActivity() {
         return bmpUri
     }
 
-    fun NextMeme(view: View) {
+
+    //Next meme button basically call the load meme function to do the same function again
+    fun nextMeme(view: View) {
         loadMemes()
     }
-
-    fun download(view: View) {}
 }
-
-
 
 
 
