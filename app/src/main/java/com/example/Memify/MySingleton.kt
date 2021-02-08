@@ -1,4 +1,4 @@
-package com.example.sharememes
+package com.example.Memify
 
 import android.content.Context
 import android.graphics.Bitmap

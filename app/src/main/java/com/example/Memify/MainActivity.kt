@@ -1,4 +1,4 @@
-package com.example.sharememes
+package com.example.Memify
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -21,6 +21,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.example.sharememes.R
 import com.squareup.picasso.Picasso
 import java.io.File
 import java.io.FileOutputStream
@@ -78,11 +79,11 @@ class MainActivity : AppCompatActivity() {
                         }).into(im)
                     },
                     {
-                        Log.d("error", it.localizedMessage)
+//                        Log.d("error", it.localizedMessage)
                     })
 
             // Add the request to the RequestQueue.
-            MySingleton.getInstance(this,).addToRequestQueue(JsonObjectRequest)
+            MySingleton.getInstance(this, ).addToRequestQueue(JsonObjectRequest)
 
     }
 

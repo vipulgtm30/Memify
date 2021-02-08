@@ -1,4 +1,4 @@
-package com.example.sharememes
+package com.example.Memify
 
 import android.content.Intent
 import android.graphics.Typeface
@@ -9,6 +9,7 @@ import android.os.Looper
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.HandlerCompat.postDelayed
+import com.example.sharememes.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
